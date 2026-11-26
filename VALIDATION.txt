@@ -1,0 +1,28 @@
+CipherMate Backend validation
+Python 3.13.5, Linux, installed pinned dependency versions.
+28 automated pytest tests passed (offline and mocked provider).
+9 checks against earlier supplied fixture ZIP passed: duplicate detection, correct decryption, wrong key, tamper, four signature cases, unknown format.
+Actual Uvicorn HTTP smoke test passed (health, UI delivery, upload, offline chat/hash).
+18 original agent/context/project files match the uploaded MVP ZIP byte-for-byte.
+Not tested: real DeepSeek API credentials, browser interaction automation, live Bonscore hosting, GitHub Actions execution, security audit or load testing. Private beta only.
+
+SleekSphere UI revision:
+28 existing pytest tests passed again; Node JavaScript syntax check passed.
+Chromium rendered local HTML/CSS at 1440px and 390px widths, with no horizontal overflow; screenshots inspected. Isolated browser DOM checks with mocked fetch passed (shortcut, connect, history, navigation, disconnect).
+Full browser-to-HTTP test could not run: this environment's browser blocked navigation by administrator policy. Actual live DeepSeek/Bonscore integration and full browser end-to-end tests remain pending. The backend, API, original Markdown agent definitions and policies are unchanged.
+
+Minimal chat UI revision:
+30 pytest tests passed, including direct loopback local access, rejection of cross-origin writes, invalid bearer, forwarded headers, non-loopback Host/client, and default authentication remaining enabled.
+Node syntax and Bash launcher syntax checks passed.
+Actual Uvicorn HTTP smoke test passed: root redirect, token-free local capabilities, upload, offline chat proposal, approval, download, and history.
+Chromium desktop (1440x900) and mobile (390x844) rendered with no horizontal overflow. Mocked browser chat and Files/History dialogs passed. Browser-to-live-server navigation remained blocked by environment policy; full browser HTTP flow not verified.
+No live DeepSeek or public Bonscore authentication/deployment tested. Local demo only; do not expose it to the internet.
+
+
+Approved plush mascot UI revision:
+32 automated pytest tests passed (including the original 30, static asset/control checks, and offline crypto command round trips including Ed25519).
+9 prior fixture checks passed again.
+JavaScript syntax check and launcher syntax check passed.
+Desktop 1440x900 and mobile 390x844 screenshots rendered with Chromium; no horizontal overflow on mobile; visual inspection completed.
+Browser environment blocks direct HTTP navigation. A test-only bridge forwarded UI fetch requests to an actual Uvicorn loopback server with temporary synthetic credentials/state. Verified Chat and minimize/restore/close, Connect capability check, upload, key creation, approval, encryption, decryption, exact downloaded bytes, vault entry and history. Simulated SpeechRecognition event filled the composer without sending; explicit send executed hash. No real microphone, remote speech service or actual speech playback was tested. No live DeepSeek, public authentication or Bonscore deployment tested.
+No additional runtime dependencies. Existing Python authorization, storage, operation schemas and 15 Markdown agent/context files unchanged. Local demo remains loopback-only. Voice recognition and speech synthesis depend on browser support and consent; Connect means scoped workspace tools, not third-party integration.

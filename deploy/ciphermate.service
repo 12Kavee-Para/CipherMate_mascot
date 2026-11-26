@@ -1,0 +1,23 @@
+# Example only: install source and venv at /opt/ciphermate, create user first.
+[Unit]
+Description=CipherMate backend
+After=network-online.target
+Wants=network-online.target
+[Service]
+User=ciphermate
+Group=ciphermate
+WorkingDirectory=/opt/ciphermate
+EnvironmentFile=/etc/ciphermate/runtime.env
+StateDirectory=ciphermate
+StateDirectoryMode=0700
+UMask=0077
+ExecStart=/usr/bin/env CM_LOCAL_DEMO=0 /opt/ciphermate/.venv/bin/python -m uvicorn backend.main:create_app --factory --host 127.0.0.1 --port 8000 --workers 1 --no-access-log --limit-concurrency 32
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/ciphermate
+[Install]
+WantedBy=multi-user.target
